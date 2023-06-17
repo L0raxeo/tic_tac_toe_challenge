@@ -58,7 +58,10 @@ bool checkDiagonals() {
         diagonalSlots[i] = board[i][i];
     }
 
-    bool isDiagonalConnection = diagonalSlots[0] != EMPTY_SLOT && diagonalSlots[0] == diagonalSlots[1] && diagonalSlots[1] == diagonalSlots[2];
+    bool isDiagonalConnection =
+            diagonalSlots[0] != EMPTY_SLOT &&
+            diagonalSlots[0] == diagonalSlots[1] &&
+            diagonalSlots[1] == diagonalSlots[2];
 
     if (isDiagonalConnection) {
         win(diagonalSlots[0]);
@@ -69,7 +72,10 @@ bool checkDiagonals() {
         diagonalSlots[i] = board[i][BOARD_SIZE - 1 - i];
     }
 
-    isDiagonalConnection = diagonalSlots[0] != EMPTY_SLOT && diagonalSlots[0] == diagonalSlots[1] && diagonalSlots[1] == diagonalSlots[2];
+    isDiagonalConnection =
+            diagonalSlots[0] != EMPTY_SLOT &&
+            diagonalSlots[0] == diagonalSlots[1] &&
+            diagonalSlots[1] == diagonalSlots[2];
 
     if (isDiagonalConnection) {
         win(diagonalSlots[0]);
@@ -141,8 +147,7 @@ void place() {
 
     bool outOfBounds = cPlace > 2 || rPlace > 2;
     bool alreadyMarked = board[rPlace][cPlace] != EMPTY_SLOT;
-    if (alreadyMarked || outOfBounds)
-    {
+    if (alreadyMarked || outOfBounds) {
         if (outOfBounds)
             std::cout << "Invalid slot" << std::endl;
         else std::cout << "Place is already taken by " << board[rPlace][cPlace] << "!" << std::endl;
