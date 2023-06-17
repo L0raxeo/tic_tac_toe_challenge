@@ -11,14 +11,14 @@ bool playing = true;
 // crosses = X
 void drawBoard() {
     std::cout << "Current Board: " << std::endl;
-    std::cout << "    0   1   2" << std::endl;
-    std::cout << "  #############" << std::endl;
-    std::cout << "0 # " << board[0][0] << " # " << board[0][1] << " # " << board[0][2] << " #" << std::endl;
-    std::cout << "  #############" << std::endl;
-    std::cout << "1 # " << board[1][0] << " # " << board[1][1] << " # " << board[1][2] << " #" << std::endl;
-    std::cout << "  #############" << std::endl;
-    std::cout << "2 # " << board[2][0] << " # " << board[2][1] << " # " << board[2][2] << " #" << std::endl;
-    std::cout << "  #############" << std::endl;
+    std::cout << "    0     1     2" << std::endl;
+    std::cout << "       |     |    " << std::endl;
+    std::cout << "0   " << board[0][0] << "  |  " << board[0][1] << "  |  " << board[0][2] << "  " << std::endl;
+    std::cout << "  -----+-----+-----" << std::endl;
+    std::cout << "1   " << board[1][0] << "  |  " << board[1][1] << "  |  " << board[1][2] << "  " << std::endl;
+    std::cout << "  -----+-----+-----" << std::endl;
+    std::cout << "2   " << board[2][0] << "  |  " << board[2][1] << "  |  " << board[2][2] << "  " << std::endl;
+    std::cout << "       |     |    " << std::endl;
 }
 
 void reset() {
@@ -139,9 +139,13 @@ void place() {
     std::cout << "Type in row [0, 2]" << std::endl;
     std::cin >> rPlace;
 
-    if (board[rPlace][cPlace] != EMPTY_SLOT)
+    bool outOfBounds = cPlace > 2 || rPlace > 2;
+    bool alreadyMarked = board[rPlace][cPlace] != EMPTY_SLOT;
+    if (alreadyMarked || outOfBounds)
     {
-        std::cout << "Place is already taken by " << board[rPlace][cPlace] << "!" << std::endl;
+        if (outOfBounds)
+            std::cout << "Invalid slot" << std::endl;
+        else std::cout << "Place is already taken by " << board[rPlace][cPlace] << "!" << std::endl;
         place();
     }
 
