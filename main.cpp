@@ -10,6 +10,7 @@ bool playing = true;
 // noughts = O
 // crosses = X
 void drawBoard() {
+    system("cls");
     std::cout << "Current Board: " << std::endl;
     std::cout << "    0     1     2" << std::endl;
     std::cout << "       |     |    " << std::endl;
